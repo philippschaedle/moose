@@ -330,3 +330,10 @@ The results after some time of simulation are shown in [retard_mesh_result_fig].
 The reason for this is the following.  Heat flows into the system through the fracture's left side.  In each mesh it has to "fill up" the nodes on the top and bottom of the fracture.  The nodal volume of these nodes contains contributions from the matrix elements that they are joined to.  So the nodal volume of the nodes in Mesh A and B is quite large compared to Mesh C.  Hence, more heat energy is needed to raise their temperature, which means that the temperature changes more slowly in Mesh A and B compared with Mesh C.
 
 We call this "retardation" of the flow by the matrix.  It is not a real physical effect: it is due to the coarse resolution in the matrix.  Although this section has concentrated on the simple diffusion equation with no [numerical stabilization](stabilization.md), exactly the same phenomenom occurs in PorousFlow simulations, and users may need to be aware of this.
+
+This issue can be fixed using the transfer kernel (see [FracTrans_Fig]).
+
+!listing modules/porous_flow/examples/flow_through_fractured_media/diffusion_transfer.i
+
+!media media/porous_flow/fracture_flow_diffusion_transfer.png style=width:100%;margin-left:10px; caption=T over Arc length for different matrix mesh resolutions.  id=FracTrans_Fig
+
